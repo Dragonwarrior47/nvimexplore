@@ -12,5 +12,5 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = "menuone,noselect"
 vim.o.termguicolors = true
 vim.o.relativenumber = true
-vim.o.colorcolumn = "100"
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#3b4261" })
+-- vim.o.colorcolumn = "100"
+-- vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#3b4261" })

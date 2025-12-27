@@ -14,12 +14,14 @@ return {
       -- local capabilities = require("blink.cmp").get_lsp_capabilities()
       local capabilities = {}
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup { capabilities = capabilities }
-      lspconfig.gopls.setup { capabilities = capabilities }
-      lspconfig.rust_analyzer.setup { capabilities = capabilities }
-      lspconfig.protols.setup { capabilities = capabilities }
+      lspconfig.lua_ls.setup({ capabilities = capabilities })
+      lspconfig.pylsp.setup({ capabilities = capabilities })
+      lspconfig.gopls.setup({ capabilities = capabilities })
+      lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+      lspconfig.protols.setup({ capabilities = capabilities })
       --  lspconfig.markdown_oxide.setup { capabilities = capabilities }
-      lspconfig.ts_ls.setup { capabilities = capabilities,
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
         settings = {
           typescript = {
             format = {
@@ -34,27 +36,27 @@ return {
               tabSize = 2,
               convertTabsToSpaces = true,
             },
-          }
-        }
-      }
-      -- lspconfig.vsg.setup { capabilities = capabilities }
-      lspconfig.sqls.setup { capabilities = capabilities }
-      lspconfig.pyright.setup { capabilities = capabilities,
-        settings = {
-          pyright = {
-            disableOrganizeImports = true,
-          },
-          python = {
-            analysis = {
-              ignore = { '*' },
-            },
           },
         },
-        on_attach = function(client)
-          client.server_capabilities.documentFormattingProvider = false -- Disable formatting
-        end,
-      }
-      require('lspconfig').ruff.setup({
+      })
+      -- lspconfig.vsg.setup { capabilities = capabilities }
+      lspconfig.sqls.setup({ capabilities = capabilities })
+      --      lspconfig.pyright.setup { capabilities = capabilities,
+      --        settings = {
+      --          pyright = {
+      --            disableOrganizeImports = true,
+      --          },
+      --          python = {
+      --            analysis = {
+      --              ignore = { '*' },
+      --            },
+      --          },
+      --        },
+      --        on_attach = function(client)
+      --          client.server_capabilities.documentFormattingProvider = false -- Disable formatting
+      --        end,
+      --      }
+      require("lspconfig").ruff.setup({
         capabilities = capabilities,
         init_options = {
           settings = {
@@ -63,18 +65,17 @@ return {
             logLevel = "trace",
             fixAll = true,
             lint = {
-              enable = false
+              enable = false,
             },
             format = {
               enabled = true, -- allow formatting via Ruff
             },
-
-          }
+          },
         },
         on_attach = function(client, bufnr)
           client.server_capabilities.documentFormattingProvider = true
         end,
       })
     end,
-  }
+  },
 }

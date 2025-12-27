@@ -4,7 +4,7 @@ return {
     build = ":TSUpdate",
     config = function()
       require 'nvim-treesitter.configs'.setup {
-        ensure_installed = { "lua", "python", "rust", "scala", "sql", "html", "javascript" },
+        ensure_installed = { "lua", "python", "rust", "scala", "sql", "html", "javascript", "java" },
         auto_install = false,
 
         highlight = {
